@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
+import {TaskType} from "./components/TodoForm";
+
 import './App.css';
+import {TodoWrapper} from "./components/TodoWrapper";
+import {v4 as uuidv4} from "uuid";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const todoTasks: Array<TaskType> = [
+        {
+            id: uuidv4(),
+            task: "Brush your teeth",
+            completed: false,
+            isEditing: false
+        },
+        {
+            id: uuidv4(),
+            task: "Go to school",
+            completed: false,
+            isEditing: false
+        },
+        {
+            id: uuidv4(),
+            task: "Buy groceries",
+            completed: false,
+            isEditing: false
+        },
+        {
+            id: uuidv4(),
+            task: "Pay bills",
+            completed: true,
+            isEditing: false
+        },
+        {
+            id: uuidv4(),
+            task: "Call mom",
+            completed: false,
+            isEditing: false
+        }
+    ]
+
+    return (
+        <div className="text-center">
+            <TodoWrapper todoTasks={todoTasks}/>
+        </div>
+    );
 }
 
 export default App;
