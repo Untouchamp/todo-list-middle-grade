@@ -43,10 +43,8 @@ export const TodoWrapper = (props: TodoWrapperType) => {
 
         if (active.id !== over?.id) {
             setTasks((items) => {
-                const activeIndex = items.indexOf(items.find(i => i.id === active.id));
-                // const activeIndex = 0;
-                const overIndex = items.indexOf(items.find(i => i.id === over?.id));
-                // const overIndex = 1;
+                const activeIndex = items.findIndex(i => active?.id && i.id===active.id);
+                const overIndex = items.findIndex(i => over?.id && i.id===over.id);
                 return arrayMove(items, activeIndex, overIndex);
             })
         }
