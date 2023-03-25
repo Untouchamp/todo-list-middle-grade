@@ -14,11 +14,9 @@ export const TodoWrapper = (props: TodoWrapperType) => {
     const [tasks, setTasks] = useState<Array<TaskType>>(todoTasks)
 
     const addTask = (task: string) => {
-        const ordNum = tasks.length + 1;
         setTasks([...tasks,
             {
                 id: uuidv4(),
-                orderNumber: ordNum,
                 task: task,
                 completed: false,
                 isEditing: false

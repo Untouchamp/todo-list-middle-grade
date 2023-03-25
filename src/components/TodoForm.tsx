@@ -2,7 +2,6 @@ import React, {FormEvent, useState} from "react";
 
 export type TaskType = {
     id: string,
-    orderNumber: number,
     task: string,
     completed: boolean,
     isEditing: boolean
