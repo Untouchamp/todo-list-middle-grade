@@ -1,5 +1,5 @@
 import {TodoForm, TaskType} from "./TodoForm";
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {Todo} from "./Todo";
 import {closestCenter, DndContext, DragEndEvent} from "@dnd-kit/core";

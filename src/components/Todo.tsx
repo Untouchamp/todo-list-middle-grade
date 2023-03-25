@@ -21,7 +21,7 @@ export const Todo = (props : TodoPropsType) => {
         setNodeRef,
         transform,
         transition
-    } = useSortable({id: props.task.id});
+    } = useSortable({id: task.id});
 
     const style = {
         transform: CSS.Transform.toString(transform),
@@ -29,15 +29,18 @@ export const Todo = (props : TodoPropsType) => {
     }
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+        <div className="flex relative justify-between">
+            <span className="py-3 px-1 mb-4 cursor-grab text-purple-400" {...listeners} style={style} {...attributes}>•</span>
             {task.isEditing ? (
-                <EditTodoForm key={task.id} editTask={editTask} task={task}/>
+                <EditTodoForm setNodeRef={setNodeRef} style={style} attributes={attributes} key={task.id} editTask={editTask} task={task}/>
             ) : (
-                <div className="flex justify-between text-center bg-purple-500 text-white py-3 px-4 rounded-md mb-4 cursor-pointer"
-                     onDoubleClick={() => editTodo(task.id)}>
+                <div
+                    ref={setNodeRef} style={style} {...attributes}
+                    className="flex justify-between w-full text-center bg-purple-500 text-white py-3 px-4 rounded-md mb-4 cursor-pointer"
+                    onDoubleClick={() => editTodo(task.id)}>
                     <p className={`${task.completed ? 'text-purple-200 line-through' : ""} w-fit text-left`}
                        onClick={() => toggleComplete(task.id)}>{task.task}</p>
-                    <div className="flex ml-6">
+                    <div className="flex items-center ml-6">
                         <button type="button"
                                 onClick={() => editTodo(task.id)}
                         >
